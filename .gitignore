@@ -1,0 +1,23 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+
+# Excel uploads folder
+uploads/
+
+# VS Code settings
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
