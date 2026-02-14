@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Dashboard | DairyMithra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customer.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>DairyMithra</h2>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="dashboard">
+
+    <div class="card">
+
+        <h3>{{ user.name }}</h3>
+        <p class="phone">📞 {{ user.phone }}</p>
+
+        <div class="info">
+            <p><strong>Milk / Day:</strong> {{ user.milk }} L</p>
+            <p><strong>Total Amount:</strong> ₹ {{ user.totalAmount }}</p>
+            <p><strong>Payments Made:</strong> ₹ {{ user.payments }}</p>
+            <p><strong>Pending:</strong> ₹ {{ user.totalAmount - user.payments }}</p>
+        </div>
+
+        <div class="delivery-status">
+            {% if user.delivery %}
+                <span class="active">Delivery Active</span>
+            {% else %}
+                <span class="paused">Delivery Paused</span>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/customer.js') }}"></script>
+
+</body>
+</html>

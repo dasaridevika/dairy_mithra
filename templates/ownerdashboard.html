@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Dashboard | DairyMithra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owner.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>DairyMithra Owner Panel</h2>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="dashboard">
+
+    <!-- STATS SECTION -->
+    <div class="stats">
+
+        <div class="stat-card">
+            <h4>Total Customers</h4>
+            <p>
+                {{ users | selectattr("role","equalto","customer") | list | length }}
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <h4>Total Revenue</h4>
+            <p>
+                ₹ {{ users | selectattr("role","equalto","customer") 
+                     | sum(attribute="totalAmount") }}
+            </p>
+        </div>
+
+        <div class="stat-card">
+            <h4>Milk Price</h4>
+            <p>₹ 50 / L</p>
+        </div>
+
+    </div>
+
+    <!-- ADD CUSTOMER -->
+    <div class="form-box">
+        <h3>Add Customer</h3>
+        <form method="POST" action="/add_customer">
+            <input type="text" name="name" placeholder="Customer Name" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <button type="submit">Add Customer</button>
+        </form>
+    </div>
+
+    <!-- CUSTOMER TABLE -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Milk (L/day)</th>
+            <th>Total</th>
+            <th>Payments</th>
+            <th>Pending</th>
+            <th>Delivery</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for user in users %}
+            {% if user.role == "customer" %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.phone }}</td>
+
+                <td>
+                    <form action="/update_user" method="POST" style="display:flex; gap:5px;">
+                        <input type="hidden" name="phone" value="{{ user.phone }}">
+                        <input type="number" step="0.5" name="milk" value="{{ user.milk }}" required>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+
+                <td>₹ {{ user.totalAmount }}</td>
+                <td>₹ {{ user.payments }}</td>
+                <td class="total-cell" data-milk="{{ user.milk }}">
+    ₹ {{ user.milk * 50 * 30 }}
+</td>
+<td class="pending-cell">
+    ₹ {{ (user.milk * 50 * 30) - user.payments }}
+</td>
+
+
+                <td>
+                    {% if user.delivery %}
+                        <a href="/toggle_delivery/{{ user.phone }}">Active</a>
+                    {% else %}
+                        <a href="/toggle_delivery/{{ user.phone }}">Paused</a>
+                    {% endif %}
+                </td>
+
+                <td style="display:flex; flex-direction:column; gap:5px;">
+                    
+                    <form action="/add_payment" method="POST">
+                        <input type="hidden" name="phone" value="{{ user.phone }}">
+                        <input type="number" step="0.01" name="payment" placeholder="Add Payment" required>
+                        <button type="submit">Add</button>
+                    </form>
+
+                    <a href="/download_pdf/{{ user.phone }}">Invoice</a>
+                    <a href="/delete_user/{{ user.phone }}">Delete</a>
+
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/owner.js') }}"></script>
+
+</body>
+</html>

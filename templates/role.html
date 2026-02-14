@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Select Role | DairyMithra</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/role.css') }}">
+</head>
+<body>
 
+<div class="container">
+
+    <div class="brand">
+        <h1>DairyMithra</h1>
+        <p>Select your role to continue</p>
+    </div>
+
+    <div class="cards">
+
+        <!-- Owner Card -->
+        <form method="POST">
+            <input type="hidden" name="role" value="owner">
+            <div class="card owner" onclick="this.closest('form').submit()">
+                <h3>Owner</h3>
+                <p>Manage customers, payments & deliveries</p>
+            </div>
+        </form>
+
+        <!-- Customer Card -->
+        <form method="POST">
+            <input type="hidden" name="role" value="customer">
+            <div class="card customer" onclick="this.closest('form').submit()">
+                <h3>Customer</h3>
+                <p>View milk usage & payment details</p>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='js/role.js') }}"></script>
+
+</body>
+</html>

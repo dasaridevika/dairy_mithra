@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DairyMithra | Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="hero">
+
+    <div class="login-card">
+
+        <div class="brand">
+            <h1>DairyMithra</h1>
+            <p>Smart Dairy Management System</p>
+        </div>
+
+        <form action="/login" method="POST">
+
+            <div class="input-box">
+                <span>+91</span>
+                <input 
+                    type="text" 
+                    name="phone" 
+                    placeholder="Enter 10-digit Phone Number"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    required>
+            </div>
+
+            <button type="submit">Continue →</button>
+
+        </form>
+
+        <div class="secure-text">
+            🔒 Secure Login
+        </div>
+
+    </div>
+
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>
