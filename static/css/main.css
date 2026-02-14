@@ -1,1 +1,124 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
 
+/* BODY BACKGROUND */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:
+        linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url("../images/background_index.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+
+/* HERO CONTAINER */
+.hero{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* LOGIN CARD */
+.login-card{
+    width:420px;
+    padding:45px 40px;
+    background:white;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,0.25);
+    transition:0.3s ease;
+}
+
+.login-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 35px 70px rgba(0,0,0,0.3);
+}
+
+/* BRAND SECTION */
+.brand h1{
+    font-size:30px;
+    color:#198754;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.brand p{
+    color:#555;
+    margin-bottom:30px;
+    font-size:14px;
+}
+
+/* INPUT BOX */
+.input-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #ddd;
+    border-radius:30px;
+    padding:14px 18px;
+    margin-bottom:25px;
+    transition:0.3s ease;
+}
+
+.input-box:focus-within{
+    border-color:#198754;
+    box-shadow:0 0 0 3px rgba(25,135,84,0.15);
+}
+
+.input-box span{
+    margin-right:10px;
+    color:#198754;
+    font-weight:600;
+}
+
+.input-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:15px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:30px;
+    background:#198754;
+    color:white;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+button:hover{
+    background:#146c43;
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* SECURE TEXT */
+.secure-text{
+    margin-top:18px;
+    font-size:13px;
+    color:#777;
+}
+
+/* RESPONSIVE */
+@media(max-width:480px){
+    .login-card{
+        width:90%;
+        padding:35px 25px;
+    }
+}

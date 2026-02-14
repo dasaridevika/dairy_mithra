@@ -1,0 +1,111 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+/* BACKGROUND */
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f5132,#198754,#20c997);
+}
+
+/* MAIN CONTAINER */
+.container{
+    text-align:center;
+    width:100%;
+    max-width:1000px;
+    padding:40px 20px;
+}
+
+/* BRAND */
+.brand h1{
+    font-size:40px;
+    color:white;
+    margin-bottom:10px;
+    font-weight:700;
+}
+
+.brand p{
+    color:#e0f2f1;
+    margin-bottom:60px;
+    font-size:16px;
+}
+
+/* CARD WRAPPER */
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+/* CARD STYLE */
+.card{
+    width:260px;
+    height:280px;
+    background:white;
+    border-radius:25px;
+    padding:30px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    box-shadow:0 25px 60px rgba(0,0,0,0.25);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* HOVER EFFECT */
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 35px 80px rgba(0,0,0,0.35);
+}
+
+/* TITLE */
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+/* DESCRIPTION */
+.card p{
+    font-size:14px;
+    text-align:center;
+    color:#555;
+}
+
+/* OWNER ACCENT */
+.owner{
+    border-top:6px solid #198754;
+}
+
+/* CUSTOMER ACCENT */
+.customer{
+    border-top:6px solid #0d6efd;
+}
+
+/* CLICK EFFECT */
+.card:active{
+    transform:scale(0.97);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .cards{
+        flex-direction:column;
+        align-items:center;
+        gap:30px;
+    }
+
+    .card{
+        width:85%;
+    }
+}
